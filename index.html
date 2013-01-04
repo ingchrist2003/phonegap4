@@ -1,73 +1,93 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Aplic. Web de jQuery Mobile</title>
-<link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
-<script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
-<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
-<script language="javascript">
+    <head>
+        <meta charset="UTF-8">
+            <title>Aplic. Web de jQuery Mobile</title>
+            <link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+            <script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+            <script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+            <script language="javascript">
                 document.addEventListener("deviceReady",dispositivoListo(),false);
                 function dispositivoListo(){
                     alert("Dispositivo listo");
                 }
+                navigator.geolocation.getCurrentPosition(lecturaGPS,errorGPS,{enableHighAccuracy:true});
+                function lecturaGPS(position)
+                {
+                    alert("Gps activo y funcional");
+                    alert('Latitude: '          + position.coords.latitude          + '\n' +
+                          'Longitude: '         + position.coords.longitude         + '\n' +
+                          'Altitude: '          + position.coords.altitude          + '\n' +
+                          'Accuracy: '          + position.coords.accuracy          + '\n' +
+                          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+                          'Heading: '           + position.coords.heading           + '\n' +
+                          'Speed: '             + position.coords.speed             + '\n' +
+                          'Timestamp: '         + new Date(position.timestamp)      + '\n');
+                }
+                function errorGPS(error)
+                {
+                    alert("Gps no disponible");
+                }
                 </script>
-</head> 
-<body> 
-
-<div data-role="page" id="page">
-	<div data-role="header">
-		<h1>Página uno</h1>
-	</div>
-	<div data-role="content">	
-		<ul data-role="listview">
-			<li><a href="#page2">Página dos tab</a></li>
-            <li><a href="#page3">Página tres</a></li>
-			<li><a href="#page4">Página cuatro</a></li>
-		</ul>		
-	</div>
-	<div data-role="footer">
-		<h4>Pie de página</h4>
-	</div>
-</div>
-
-<div data-role="page" id="page2">
-	<div data-role="header">
-		<h1>Página dos</h1>
-	</div>
-	<div data-role="content">	
-		Contenido	
-        <video id="mivideo" src="http://thethinkercloud.com/christian/Descarga_aplicaciones_en_tu_Nokia.mp4"	 width="300px"></video>
-	</div>
-	<div data-role="footer">
-		<h4>Pie de página</h4>
-	</div>
-</div>
-
-<div data-role="page" id="page3">
-	<div data-role="header">
-		<h1>Página tres</h1>
-	</div>
-	<div data-role="content">	
-		Contenido		
-        <img src="http://thethinkercloud.com/christian/blacky.jpg" width="100" />
-	</div>
-	<div data-role="footer">
-		<h4>Pie de página</h4>
-	</div>
-</div>
-
-<div data-role="page" id="page4">
-	<div data-role="header">
-		<h1>Página cuatro</h1>
-	</div>
-	<div data-role="content">	
-		Contenido		
-	</div>
-	<div data-role="footer">
-		<h4>Pie de página</h4>
-	</div>
-</div>
-
-</body>
+    </head>
+    <body>
+        
+        <div data-role="page" id="page">
+            <div data-role="header">
+                <h1>Página uno</h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview">
+                    <li><a href="#page2">Página dos</a></li>
+                    <li><a href="#page3">Página tres</a></li>
+                    <li><a href="#page4">Página cuatro</a></li>
+                </ul>
+            </div>
+            <div data-role="footer">
+                <h4>Pie de página</h4>
+            </div>
+        </div>
+        
+        <div data-role="page" id="page2">
+            <div data-role="header">
+                <h1>Página dos</h1>
+            </div>
+            <div data-role="content">
+                <a href="#" data-rel="back" data-role="button">Regresar</a><br>
+                Contenido
+                <video id="mivideo" src="http://thethinkercloud.com/christian/Big_Buck_Bunny_Trailer.m4v"	 width="300px"></video>
+            </div>
+            <div data-role="footer">
+                <h4>Pie de página</h4>
+            </div>
+        </div>
+        
+        <div data-role="page" id="page3">
+            <div data-role="header">
+                <h1>Página tres</h1>
+            </div>
+            <div data-role="content">
+                <a href="#" data-rel="back" data-role="button">Regresar</a><br>
+                Contenido
+                <img src="http://thethinkercloud.com/christian/blacky.jpg" width="100" />
+            </div>
+            <div data-role="footer">
+                <h4>Pie de página</h4>
+            </div>
+        </div>
+        
+        <div data-role="page" id="page4">
+            <div data-role="header">
+                <h1>Página cuatro</h1>
+            </div>
+            <div data-role="content">
+                <a href="#" data-rel="back" data-role="button">Regresar</a><br>
+                Contenido
+            </div>
+            <div data-role="footer">
+                <h4>Pie de página</h4>
+            </div>
+        </div>
+        
+    </body>
 </html>
