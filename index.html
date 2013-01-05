@@ -49,6 +49,10 @@
                 {
                     navigator.notification.beep(repeticiones);
                 }
+                function vibrar()
+                {
+                    navigator.notification.vibrate(2000);
+                }
                 
                 $(document).ready(function() {
                     //
@@ -100,6 +104,7 @@
                 <a href="#" data-rel="back" data-role="button">Regresar</a><br>
                 Contenido
                 <button onclick="alertaBeep(3);">Alerta Beep</button><br>
+                <button onclick="vibrar();">Alerta Vibrar</button><br>
                 <img src="http://thethinkercloud.com/christian/blacky.jpg" width="100" />
             </div>
             <div data-role="footer">
