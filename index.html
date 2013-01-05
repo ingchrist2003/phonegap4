@@ -13,17 +13,15 @@
 
                 var iden = 0;
                 function dispositivoListo(){
-                    var networkstate = navigator.connection.type;
-                    alert(networkstate);
-					alert("Dispositivo ok"); 
+                    //alert("Dispositivo listo");
                     //imprimimos el identificador del dispositivo
-					
-                    /*iden = device.uuid;
+                    iden = device.uuid;
                     $("#layeriden").html("identificador"+iden);
                     //alert(device.version)
                     navigator.notification.alert("La versión del SO es "+device.version,null,"Phone Gap App 4","Aceptar")
                     navigator.notification.confirm("La versión del SO es "+device.version,respuesta,"Alerta tipo Confirm","Aceptar,Cancelar");
-					*/
+                    var networkstate = navigator.network.connection.type;
+                    alert(networkstate);
                 }
                 function respuesta(button)
                 {
@@ -44,7 +42,6 @@
                           'Heading: '           + position.coords.heading           + '\n' +
                           'Speed: '             + position.coords.speed             + '\n' +
                           'Timestamp: '         + new Date(position.timestamp)      + '\n');
-						  dispositivoListo()
                 }
                 function errorGPS(error)
                 {
@@ -57,6 +54,23 @@
                 function vibrar()
                 {
                     navigator.notification.vibrate(2000);
+                }
+                function movAcelerometro()
+                {
+                    navigator.accelerometer.getCurrentAcceleration(lecturaAcelerometro,errorAcelerometro);
+                }
+                function lecturaAcelerometro(acelerometro)
+                {
+                    var texto = "posicion X:"+acelerometro.x+" <br>";
+                    texto += "posicion Y:"+acelerometro.y+" <br>";
+                    texto += "posicion Z:"+acelerometro.z+" <br>";
+                    alert(texto);
+                    $("#layerinfo").html(texto);
+                }
+                function errorAcelerometro()
+                {
+                    
+                    alert("Error acelerometro");
                 }
                 
                 $(document).ready(function() {
@@ -111,6 +125,8 @@
                 <button onclick="alertaBeep(3);">Alerta Beep</button><br>
                 <button onclick="vibrar();">Alerta Vibrar</button><br>
                 <img src="http://thethinkercloud.com/christian/blacky.jpg" width="100" />
+                <p id="layerinfo">pp</p>
+                <button onclick="movAcelerometro();">acelerometro</button><br>
             </div>
             <div data-role="footer">
                 <h4>Pie de página</h4>
