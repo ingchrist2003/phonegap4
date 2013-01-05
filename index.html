@@ -17,7 +17,16 @@
                     //imprimimos el identificador del dispositivo
                     iden = device.uuid;
                     $("#layeriden").html("identificador"+iden);
-                    alert(device.version)
+                    //alert(device.version)
+                    navigator.notification.alert("La versión del SO es "+device.version,null,"Phone Gap App 4","Aceptar")
+                    navigator.notification.confirm("La versión del SO es "+device.version,respuesta,"Alerta tipo Confirm","Aceptar,Cancelar");
+                }
+                function respuesta(button)
+                {
+                    if(button==1)
+                        alert("Pulso aceptar");
+                    if(button==2)
+                        alert("Pulso cancelar");
                 }
                 
                 function lecturaGPS(position)
@@ -36,6 +45,11 @@
                 {
                     alert("Gps no disponible");
                 }
+                function alertaBeep(repeticiones)
+                {
+                    navigator.notification.beep(repeticiones);
+                }
+                
                 $(document).ready(function() {
                     //
                     $("#layeriden").html("identificador");
@@ -85,6 +99,7 @@
             <div data-role="content">
                 <a href="#" data-rel="back" data-role="button">Regresar</a><br>
                 Contenido
+                <button onclick="alertaBeep(3);">Alerta Beep</button><br>
                 <img src="http://thethinkercloud.com/christian/blacky.jpg" width="100" />
             </div>
             <div data-role="footer">
