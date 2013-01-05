@@ -20,6 +20,8 @@
                     //alert(device.version)
                     navigator.notification.alert("La versión del SO es "+device.version,null,"Phone Gap App 4","Aceptar")
                     navigator.notification.confirm("La versión del SO es "+device.version,respuesta,"Alerta tipo Confirm","Aceptar,Cancelar");
+					var networkstate = navigator.network.connection.type;
+                    alert(networkstate);
                 }
                 function respuesta(button)
                 {
